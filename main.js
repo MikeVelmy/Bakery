@@ -1,4 +1,4 @@
-// Le Bijou — Coffee & Patisserie · main.js
+// The Good Baker · main.js
 
 // Year
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -64,14 +64,13 @@ function updateStatus() {
   const hour = accra.getHours() + accra.getMinutes() / 60;
   const badge = document.getElementById('statusBadge');
   const text = document.getElementById('statusText');
-  const isOpenDay = day !== 0;
-  const isOpenHour = hour >= 6 && hour < 21;
-  const open = isOpenDay && isOpenHour;
+  const isOpenHour = hour >= 7;
+  const open = isOpenHour;
   badge.classList.toggle('open', open);
   badge.classList.toggle('closed', !open);
   text.textContent = open
-    ? 'Open now · Closes 9pm'
-    : (day === 0 ? 'Closed today · Opens Monday 6am' : 'Closed now · Opens 6am');
+    ? 'Open now · Closes midnight'
+    : 'Closed now · Opens 7am';
 
   document.querySelectorAll('#hoursTable tr').forEach(tr => {
     tr.classList.toggle('today', String(day) === tr.getAttribute('data-day'));
@@ -83,7 +82,7 @@ updateStatus();
 document.querySelectorAll('img[loading="lazy"], .story-img img, .menu-photos img').forEach(img => {
   img.addEventListener('error', () => {
     const holder = img.closest('figure, .story-img, .menu-photos');
-    if (holder) holder.style.setProperty('background', 'linear-gradient(140deg,#8C3416,#28402F)');
+    if (holder) holder.style.setProperty('background', 'linear-gradient(140deg,#8F5A0E,#241811)');
     img.style.opacity = '0';
   }, { once: true });
 });
@@ -91,7 +90,7 @@ document.querySelectorAll('img[loading="lazy"], .story-img img, .menu-photos img
   const test = new Image();
   test.onerror = () => {
     document.getElementById('heroBg').style.backgroundImage =
-      'linear-gradient(180deg, rgba(24,17,11,.45) 0%, rgba(24,17,11,.5) 45%, rgba(20,14,10,.95) 100%), linear-gradient(140deg,#8C3416,#28402F)';
+      'linear-gradient(180deg, rgba(24,17,11,.45) 0%, rgba(24,17,11,.5) 45%, rgba(20,14,10,.95) 100%), linear-gradient(140deg,#8F5A0E,#241811)';
   };
-  test.src = 'https://images.unsplash.com/photo-1645677020082-721a854c24f2?w=100&q=10';
+  test.src = 'https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=100&q=10';
 })();

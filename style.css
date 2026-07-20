@@ -1,11 +1,12 @@
 /* ==========================================================================
-   Le Bijou — Coffee & Patisserie · Palace St, North Kaneshie, Accra
+   The Good Baker · Artisan Bakery · Garden Street, East Legon, Accra
    Stylesheet
 
-   Palette: a single warm family — cream (light), espresso (dark), terracotta
-   (primary accent, pulled from the shop's real sign) and gold (secondary
-   accent). Forest green is used sparingly as a small accent only, never as
-   a full section background, so nothing fights the terracotta/gold duo.
+   Palette: a single warm family, cream (light) and espresso (dark), with
+   terracotta/amber as the primary accent and gold as the secondary accent,
+   both pulled from the shop's yellow and black logo mark. The deep near
+   black "forest" tone is used sparingly for headings only, never as a
+   full section background, so nothing fights the amber/gold duo.
    ========================================================================== */
 
 :root{
@@ -13,18 +14,18 @@
   --cream:#FBF3E6;
   --cream-card:#FFFBF2;
 
-  /* Dark surfaces — one unified tone for every dark section (menu, marquee,
+  /* Dark surfaces: one unified tone for every dark section (menu, marquee,
      reviews, footer) instead of alternating brown-black / green-black */
   --espresso:#221710;
   --espresso-2:#2E2015;
 
-  /* Accents */
-  --terracotta:#B8471F;
-  --terracotta-deep:#8C3416;
-  --terracotta-soft:#D8672F;
-  --forest:#28402F;
-  --forest-deep:#182619;
-  --gold:#CDA355;
+  /* Accents, pulled from the shop's yellow and black logo mark */
+  --terracotta:#B8791C;
+  --terracotta-deep:#8F5A0E;
+  --terracotta-soft:#E0AA48;
+  --forest:#241811;
+  --forest-deep:#140D08;
+  --gold:#F0B429;
 
   /* Text */
   --ink:#2B1C12;
@@ -73,7 +74,7 @@ h1,h2,h3,h4{font-family:'Fraunces', serif; margin:0; font-weight:500; letter-spa
   white-space:nowrap;
 }
 .btn-primary{background:var(--terracotta); color:var(--cream);}
-.btn-primary:hover{transform:translateY(-3px); box-shadow:0 16px 32px -16px rgba(184,71,31,.45);}
+.btn-primary:hover{transform:translateY(-3px); box-shadow:0 16px 32px -16px rgba(184,121,28,.45);}
 .btn-line{background:transparent; color:var(--forest); border-color:var(--forest);}
 .btn-line:hover{background:var(--forest); color:var(--cream); transform:translateY(-3px);}
 .btn-ghost-light{background:rgba(251,243,230,.12); color:var(--cream); border-color:rgba(251,243,230,.4); backdrop-filter:blur(6px);}
@@ -84,7 +85,7 @@ header{
   position:fixed; top:0; left:0; right:0; z-index:100;
   padding:20px 0; transition:padding .4s var(--ease), box-shadow .4s var(--ease);
 }
-/* Note: the blurred bar background lives on ::before (not on `header` itself) on purpose —
+/* Note: the blurred bar background lives on ::before (not on `header` itself) on purpose.
    backdrop-filter/transform on `header` would make it the containing block for its
    position:fixed descendants (the mobile nav panel), breaking/shrinking that panel
    to the header's own box instead of the full viewport once scrolled. */
@@ -99,9 +100,11 @@ header.scrolled::before{opacity:1;}
 .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:20px;}
 
 .sign{display:flex; align-items:center; gap:12px; text-decoration:none;}
+.brand-mark{width:44px; height:44px; border-radius:50%; object-fit:cover; box-shadow:0 6px 16px -8px rgba(20,13,8,.5), 0 0 0 2px var(--cream);}
+.footer-brand .brand-mark{width:52px; height:52px; margin-bottom:14px;}
 .sign-plank{
   background:linear-gradient(160deg, var(--terracotta-soft), var(--terracotta) 60%, var(--terracotta-deep));
-  border-radius:8px; padding:9px 16px 7px; box-shadow:0 10px 20px -12px rgba(140,52,22,.5), inset 0 0 0 1px rgba(255,255,255,.08);
+  border-radius:8px; padding:9px 16px 7px; box-shadow:0 10px 20px -12px rgba(143,90,14,.5), inset 0 0 0 1px rgba(255,255,255,.08);
   transform-origin:top center; transition:transform .6s var(--ease);
 }
 .sign:hover .sign-plank{transform:rotate(-2.5deg);}
@@ -110,28 +113,31 @@ header.scrolled::before{opacity:1;}
   text-shadow:0 1px 0 rgba(255,255,255,.15);
 }
 .sign-plank .sub{
-  font-family:'Work Sans'; font-size:.5rem; letter-spacing:.16em; color:rgba(24,38,25,.75); text-transform:uppercase; font-weight:600;
+  font-family:'Work Sans'; font-size:.5rem; letter-spacing:.16em; color:rgba(20,13,8,.75); text-transform:uppercase; font-weight:600;
 }
 
 nav.links{display:flex; gap:34px; list-style:none; margin:0; padding:0;}
 nav.links a{
-  text-decoration:none; color:var(--ink); font-weight:500; font-size:.94rem; position:relative; padding-bottom:4px;
+  text-decoration:none; color:var(--cream); font-weight:500; font-size:.94rem; position:relative; padding-bottom:4px;
+  text-shadow:0 1px 4px rgba(20,13,8,.5); transition:color .4s var(--ease), text-shadow .4s var(--ease);
 }
 nav.links a::after{content:''; position:absolute; left:0; bottom:0; height:1.5px; width:0; background:var(--terracotta); transition:width .35s var(--ease);}
 nav.links a:hover::after{width:100%;}
+header.scrolled nav.links a{color:var(--ink); text-shadow:none;}
 
 .nav-cta{display:flex; align-items:center; gap:14px;}
 .burger{display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:8px;}
-.burger span{width:24px; height:2px; background:var(--ink); border-radius:2px; transition:transform .35s ease, opacity .35s ease;}
+.burger span{width:24px; height:2px; background:var(--cream); border-radius:2px; transition:background .4s var(--ease), transform .35s ease, opacity .35s ease; box-shadow:0 1px 3px rgba(20,13,8,.5);}
+header.scrolled .burger span{background:var(--ink); box-shadow:none;}
 
 /* ---------- HERO ---------- */
 .hero{
   position:relative; min-height:100vh; display:flex; align-items:flex-end; overflow:hidden;
-  padding-bottom:min(9vh,90px);
+  padding-bottom:min(9vh,90px); padding-top:110px;
 }
 .hero-bg{
   position:absolute; inset:-8% -8% -8% -8%; z-index:0;
-  background-image:linear-gradient(180deg, rgba(24,17,11,.32) 0%, rgba(24,17,11,.4) 45%, rgba(20,14,10,.92) 100%), url('https://images.unsplash.com/photo-1645677020082-721a854c24f2?w=1800&q=80&auto=format&fit=crop');
+  background-image:linear-gradient(180deg, rgba(24,17,11,.32) 0%, rgba(24,17,11,.4) 45%, rgba(20,14,10,.92) 100%), url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=1800&q=80&auto=format&fit=crop');
   background-size:cover; background-position:center 60%;
   will-change:transform;
   animation:kenburns 26s ease-in-out infinite alternate;
@@ -220,7 +226,7 @@ nav.links a:hover::after{width:100%;}
 .menu{background:var(--espresso); color:var(--cream); padding:min(16vh,150px) 0; position:relative; overflow:hidden;}
 .menu::before{
   content:''; position:absolute; inset:0; opacity:.6;
-  background:radial-gradient(circle at 18% 15%, rgba(184,71,31,.18), transparent 42%), radial-gradient(circle at 85% 90%, rgba(205,163,85,.1), transparent 45%);
+  background:radial-gradient(circle at 18% 15%, rgba(184,121,28,.18), transparent 42%), radial-gradient(circle at 85% 90%, rgba(240,180,41,.1), transparent 45%);
 }
 .menu-head{position:relative; display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap; margin-bottom:70px;}
 .menu-head h2{font-size:clamp(2.6rem,4.4vw,4rem); font-style:italic; color:var(--cream);}
@@ -268,12 +274,12 @@ nav.links a:hover::after{width:100%;}
 .rating-huge .sub{font-size:.85rem; color:rgba(251,243,230,.55); text-align:left; line-height:1.5;}
 .reviews-top h2{font-size:clamp(1.9rem,3vw,2.5rem); font-style:italic; color:var(--cream);}
 
-.review-grid{position:relative; display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+.review-grid{position:relative; display:grid; grid-template-columns:repeat(2,1fr); gap:26px;}
 .review-card{
   background:var(--espresso-2); border:1px solid rgba(251,243,230,.08); border-radius:10px; padding:30px 26px;
   transition:transform .5s var(--ease), border-color .5s var(--ease);
 }
-.review-card:hover{transform:translateY(-8px); border-color:rgba(205,163,85,.3);}
+.review-card:hover{transform:translateY(-8px); border-color:rgba(240,180,41,.3);}
 .review-card .stars{color:var(--gold); font-size:.85rem; letter-spacing:2px; margin-bottom:14px; display:block;}
 .review-card p{font-family:'Fraunces'; font-style:italic; font-size:1.12rem; line-height:1.55; margin:0 0 20px; color:rgba(251,243,230,.9);}
 .review-card footer{font-size:.82rem; color:rgba(251,243,230,.5); display:flex; justify-content:space-between;}
@@ -326,6 +332,7 @@ footer ul a:hover{color:var(--cream);}
   .wrap{padding:0 22px;}
   nav.links{position:fixed; inset:0 0 0 auto; z-index:5; width:min(78vw,320px); background:var(--cream); flex-direction:column; padding:110px 34px 40px; gap:26px; transform:translateX(100%); transition:transform .5s var(--ease); box-shadow:-20px 0 50px rgba(20,14,10,.16);}
   nav.links.open{transform:translateX(0);}
+  nav.links a{color:var(--ink); text-shadow:none;}
   .burger{display:flex;}
   .nav-cta .btn-line{display:none;}
   .story-grid, .visit-grid{grid-template-columns:1fr; gap:44px;}
